@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-void	ft_prt_chararray(int n, char *dgts)
+void	ft_putstr(int n, char *dgts) //checkd
 {
     // print out the array using write (loop, n) > (one function for print out the array)
 
@@ -9,32 +9,38 @@ void	ft_prt_chararray(int n, char *dgts)
 	i = 0;
 	while (i < n)
         write(1, &dgts[i], 1);
-    // add the comma
+    // add the comma if it's not the last combo.
     if (!(dgts[0] == 10 - n))
         write(1, ", ",2);
 }
 
 void ft_print_combn(int n)
 {
-	// create a char array of n size.
-    char dgts[n];
+	// create a char array of 9 position.
+    char dgts[9];
     int i;
-    // init each postion until the end of the array: ary[1] < ary[2] ...
+
+    // init each postion until the end of the array applying the rule: ary[i] < ary[i+1] 
     i = 0;
     while (i < n)
     {
         dgts[i] = '0' + i;
         i++;
     }
-    // how to increment things with uncertain digits? the code?
+    // find all the possible comb 
+
+    //main loop 
     i = 1;
-    while ( dgts dgts[n-i] <= '9')
-    while (dgts[n-i] <= '9')
+    while (n - i >= 0)
     {
-        ft_prt_chararray(n , dgts);
-        dgts[n-i]++;
+        while((dgts[n - i] <= '9') && (dgts[n - i ] > dgts[n - i - 1] ))// ?how about the first digit, it will go out of bound
+        {
+            ft_putstr(n , dgts);
+            dgts[n - i]++;
+        }
+        i++;
     }
-    i++;
+
 
 
 
