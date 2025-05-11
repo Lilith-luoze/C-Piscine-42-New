@@ -17,7 +17,7 @@ char *ft_strcapitalize(char *str)
     while(str[i])
     {
         //i >= 1
-        if (!((str[i-1] >= 'A' && str[i-1] <= 'Z' ) || (str[i-1] >= 'a' && str[i-1] <= 'z' ) || (str[i] >= '0' && str[i] <= '9' )) && (str[i] >= 'a' && str[i] <= 'z'))
+        if (!((str[i-1] >= 'A' && str[i-1] <= 'Z' ) || (str[i-1] >= 'a' && str[i-1] <= 'z' ) || (str[i-1] >= '0' && str[i-1] <= '9' )) && (str[i] >= 'a' && str[i] <= 'z'))
             //this is normal case for modify for head -- capi
             str[i] = str[i] - ('z' - 'Z');
         else if (str[i] >= 'A' && str[i] <= 'Z') //you don't need to care about other cases. as this is "2nd opiton for one specific position"
