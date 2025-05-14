@@ -66,7 +66,7 @@ void    put_ascii_num_dec(char * str)
     write(1, &prt, 1);
 }
 
-// printable : 32-127
+// printable : 32-126
 void ft_putstr_non_printable(char *str)
 {
  // lowercase hexadecimal values, preceded by a backslash

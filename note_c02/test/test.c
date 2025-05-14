@@ -5,8 +5,8 @@
 
 int     main()
 {
-    int a = 500;
-    write(1, &a, sizeof(a));
+    unsigned long a = 500;
+    printf("%lu", sizeof(a));
     return (0);
 }
 
