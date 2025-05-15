@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_div_mod.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 14:14:54 by luozguo           #+#    #+#             */
-/*   Updated: 2025/05/15 14:51:03 by luozguo          ###   ########.fr       */
+/*   Created: 2025/05/15 14:14:30 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 14:42:26 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-void	ft_rev_int_tab(int *tab, int size)
+void	ft_div_mod(int a, int b, int *div, int *mod)
 {
-	int	i;
-	int	temp;
-
-	i = 0;
-	while (i < size / 2)
-	{
-        temp = tab[i];
-		tab[i] = tab[size - i - 1];
-        tab[size - i - 1] = temp;
-		i++;
-	}
+	*div = a / b;
+	*mod = a % b;
 }
 
 // int main()
 // {
-//     int str[] =  {1,2,3,4,5,6,7,8,9};
-//     int i = 0;
-//     int n = 9;
+//     int dvdnt = 7;
+//     int dvor = 3;
+//     int div;
+//     int mod;
 
-//     ft_rev_int_tab(str, n);
-
-//     while (i < n)
-//     {
-//         printf("%i", str[i]);
-//         i++;
-//     }
-//     return(0);
+//     ft_div_mod(dvdnt, dvor, &div, &mod);
+//     printf("%i  %i %i  %i ",dvdnt , dvor, div , mod);
+//     return (0);
 // }

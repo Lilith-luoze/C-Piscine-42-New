@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 14:14:54 by luozguo           #+#    #+#             */
-/*   Updated: 2025/05/15 14:51:03 by luozguo          ###   ########.fr       */
+/*   Created: 2025/05/15 18:19:43 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 18:19:44 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
 
-void	ft_rev_int_tab(int *tab, int size)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int	i;
-	int	temp;
-
-	i = 0;
-	while (i < size / 2)
+	while (*s1 && *s2 && *s1 == *s2)
 	{
-        temp = tab[i];
-		tab[i] = tab[size - i - 1];
-        tab[size - i - 1] = temp;
-		i++;
+		s1++;
+		s2++;
 	}
+	return (*s1 - *s2);
 }
 
 // int main()
 // {
-//     int str[] =  {1,2,3,4,5,6,7,8,9};
-//     int i = 0;
-//     int n = 9;
+//     char *str1 = "abc\0d";
+//     char *str2 = "abc\0e";
 
-//     ft_rev_int_tab(str, n);
+//     printf("%i\n", ft_strcmp(str1 , str2));
+//     printf("%i\n", strcmp(str1 , str2));
 
-//     while (i < n)
-//     {
-//         printf("%i", str[i]);
-//         i++;
-//     }
-//     return(0);
+//     return (0);
 // }

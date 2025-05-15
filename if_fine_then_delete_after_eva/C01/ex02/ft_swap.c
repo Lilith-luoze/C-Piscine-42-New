@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 14:14:54 by luozguo           #+#    #+#             */
-/*   Updated: 2025/05/15 14:51:03 by luozguo          ###   ########.fr       */
+/*   Created: 2025/05/15 14:14:24 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 14:42:17 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-void	ft_rev_int_tab(int *tab, int size)
+void	ft_swap(int *a, int *b)
 {
-	int	i;
-	int	temp;
+	int	c;
 
-	i = 0;
-	while (i < size / 2)
-	{
-        temp = tab[i];
-		tab[i] = tab[size - i - 1];
-        tab[size - i - 1] = temp;
-		i++;
-	}
+	c = *a;
+	*a = *b;
+	*b = c;
 }
 
 // int main()
 // {
-//     int str[] =  {1,2,3,4,5,6,7,8,9};
-//     int i = 0;
-//     int n = 9;
+//     int a = 0;
+//     int b = 2;
 
-//     ft_rev_int_tab(str, n);
-
-//     while (i < n)
-//     {
-//         printf("%i", str[i]);
-//         i++;
-//     }
-//     return(0);
+//     ft_swap(&a, &b);
+//     printf("%i  %i",a , b);
+//     return (0);
 // }

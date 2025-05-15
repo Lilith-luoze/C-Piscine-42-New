@@ -1,44 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 14:14:54 by luozguo           #+#    #+#             */
-/*   Updated: 2025/05/15 14:51:03 by luozguo          ###   ########.fr       */
+/*   Created: 2025/05/15 18:19:49 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 18:20:33 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
 
-void	ft_rev_int_tab(int *tab, int size)
+char	*ft_strcat(char *dest, char *src)
 {
-	int	i;
-	int	temp;
+	char	*ori_dest;
 
-	i = 0;
-	while (i < size / 2)
+	ori_dest = dest;
+	while (*dest)
 	{
-        temp = tab[i];
-		tab[i] = tab[size - i - 1];
-        tab[size - i - 1] = temp;
-		i++;
+		dest++;
 	}
+	while (*src)
+	{
+		*dest = *src;
+		dest++;
+		src++;
+	}
+	*dest = '\0';
+	return (ori_dest);
 }
 
 // int main()
 // {
-//     int str[] =  {1,2,3,4,5,6,7,8,9};
-//     int i = 0;
-//     int n = 9;
+//     char s1[100] = "am i ";
+//     char *s2 = "fool or smart? ";
+//     char s3[100] = "am i ";
 
-//     ft_rev_int_tab(str, n);
+//     printf("%s\n", ft_strcat(s1 , s2));
+//     printf("%s\n", strcat(s3 , s2));
 
-//     while (i < n)
-//     {
-//         printf("%i", str[i]);
-//         i++;
-//     }
-//     return(0);
+//     return (0);
 // }

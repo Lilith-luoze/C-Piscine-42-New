@@ -6,7 +6,7 @@
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:14:54 by luozguo           #+#    #+#             */
-/*   Updated: 2025/05/15 14:51:03 by luozguo          ###   ########.fr       */
+/*   Updated: 2025/05/15 14:51:27 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_rev_int_tab(int *tab, int size)
 	i = 0;
 	while (i < size / 2)
 	{
-        temp = tab[i];
+		temp = tab[i];
 		tab[i] = tab[size - i - 1];
-        tab[size - i - 1] = temp;
+		tab[size - i - 1] = temp;
 		i++;
 	}
 }

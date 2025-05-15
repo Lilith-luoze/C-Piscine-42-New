@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 14:14:54 by luozguo           #+#    #+#             */
-/*   Updated: 2025/05/15 14:51:03 by luozguo          ###   ########.fr       */
+/*   Created: 2025/05/15 18:19:46 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 18:20:29 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
 
-void	ft_rev_int_tab(int *tab, int size)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	i;
-	int	temp;
+	unsigned int	i;
 
 	i = 0;
-	while (i < size / 2)
+	while (*s1 && *s2 && *s1 == *s2 && i < n)
 	{
-        temp = tab[i];
-		tab[i] = tab[size - i - 1];
-        tab[size - i - 1] = temp;
+		s1++;
+		s2++;
 		i++;
 	}
+	if (i == n)
+		return (0);
+	return (*s1 - *s2);
 }
 
 // int main()
 // {
-//     int str[] =  {1,2,3,4,5,6,7,8,9};
-//     int i = 0;
-//     int n = 9;
+//     char *str1 = "12345";
+//     char *str2 = "123456";
 
-//     ft_rev_int_tab(str, n);
+//     printf("%i\n", ft_strncmp(str1 , str2 , 6));
+//     printf("%i\n", strncmp(str1 , str2, 6));
 
-//     while (i < n)
-//     {
-//         printf("%i", str[i]);
-//         i++;
-//     }
-//     return(0);
+//     return (0);
 // }

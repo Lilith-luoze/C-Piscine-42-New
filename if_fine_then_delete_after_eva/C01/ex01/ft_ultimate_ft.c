@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 14:14:54 by luozguo           #+#    #+#             */
-/*   Updated: 2025/05/15 14:51:03 by luozguo          ###   ########.fr       */
+/*   Created: 2025/05/15 14:14:19 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 14:42:04 by luozguo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-void	ft_rev_int_tab(int *tab, int size)
+void	ft_ultimate_ft(int *********nbr)
 {
-	int	i;
-	int	temp;
-
-	i = 0;
-	while (i < size / 2)
-	{
-        temp = tab[i];
-		tab[i] = tab[size - i - 1];
-        tab[size - i - 1] = temp;
-		i++;
-	}
+	*********nbr = 42;
 }
 
 // int main()
 // {
-//     int str[] =  {1,2,3,4,5,6,7,8,9};
-//     int i = 0;
-//     int n = 9;
+//     int nbr = 3;
+//     int *nbr1 = &nbr;
+//     int **nbr2 = &nbr1;
+//     int ***nbr3 = &nbr2;
+//     int ****nbr4 = &nbr3;
+//     int *****nbr5 = &nbr4;
+//     int ******nbr6 = &nbr5;
+//     int *******nbr7 = &nbr6;
+//     int ********nbr8 = &nbr7;
+//     int *********nbr9 = &nbr8;
 
-//     ft_rev_int_tab(str, n);
-
-//     while (i < n)
-//     {
-//         printf("%i", str[i]);
-//         i++;
-//     }
-//     return(0);
+//     ft_ultimate_ft(nbr9);
+//     printf("%i", nbr);
+//     return (0);
 // }

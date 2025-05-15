@@ -1,7 +1,7 @@
 # include <string.h>
 # include <stdio.h>
 
-//this is a pain.
+//A bit complicated
 
 unsigned int  lili_strlen(char *str)
 {
@@ -14,52 +14,51 @@ unsigned int  lili_strlen(char *str)
     }
     return (i);
 }
+char *lili_check_same(char *str, char *to_find)
+{
+    //check starting from str
+    while (*str && *to_find && *str == *to_find)
+    {
+        str++;
+        to_find++;
+    }
+    return (to_find);
+}
 
 char *ft_strstr(char *str, char *to_find)
 {
-    // char *ori_str;
-    // char *ori_to_find;
     unsigned int len_find;
     unsigned int i;
-    unsigned int j;
-    i = 0;
-    len_find = lili_strlen(to_find);
+    char *result;
 
+    i = 0;
     if (*to_find == '\0')
-        return (str);  
-    
-    j = 0;
+        return (str);   
+    len_find = lili_strlen(to_find);
+    // result is the first diff pointer or pointer to \0, if it - (str+i) == len_find, then we find it no matter what.
     while (str[i])//to the end of str
     {   
-        
-        while (str[i] && to_find[j] && str[i] == to_find[j] ) //to the end of to_find (good) or dif or the end of str
-        {   
-            i++;
-            j++;
+        if (str[i] == to_find[0])
+        {
+            result = lili_check_same(str+i, to_find);
+            if (*result == '\0' )
+                return (str+i); //found it. len_
+            i = i + (result - to_find);
         }
-        if ( j == len_find)
-            return (str + i - len_find); //check -1 or not; 
         else 
-            j = 0;         
-        if ( str[i] == to_find[j] )
+            i++;
     }
-
-
-    return (NULL)
-    return (<the ptr to the first occurence);
-
+    return (NULL);
 }
 
-int main()
-{
-    char s1[100] = "am i ";
-    char *s2 = "fool or smart? ";
-    char s3[100] = "am i ";
-    unsigned int nb = 4;
+// int main()
+// {
+//     char *to_find = "f";
+//     char *src = "am i fool or smart? ";
 
-    printf("%s\n", ft_strncat(s1 , s2, nb));
-    printf("%s\n", strncat(s3 , s2, nb));
+//     printf("%s\n", ft_strstr(src , to_find));
+//     printf("%s\n", strstr(src , to_find));
     
 
-    return (0);
-}
+//     return (0);
+// }
