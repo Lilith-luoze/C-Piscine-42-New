@@ -1,41 +1,35 @@
 # include <unistd.h>
 # include <string.h>
+# include <stdio.h>
 
-void putstr(char* str)
+
+
+
+char	*ft_strcpy(char *dest, char *src)
 {
-    while (*str)
-    {
-        write(1, str, 1);
-        str++;
-    }
-    write(1,"\n",1);
+	char	*ori_dest;
+
+	ori_dest = dest;
+	while (*src)
+	{
+		*dest = *src;   // because I didn't put \0? yes!
+		dest++;
+		src++;
+	}
+	*dest = '\0';
+	return (ori_dest);
 }
 
-
-char *ft_strcpy(char *dest, char *src)
+int main()
 {
-    char *ori_dest;
+    char dest_ft[100];
+    char dest_builtin[100];
+    char *src = "try this one  (";
+    ft_strcpy(dest_ft, src);
+    strcpy(dest_builtin, src);
+    printf("%s\n",dest_ft);
+    printf("%s\n",dest_builtin);
+    return (0);
 
-    ori_dest = dest;
-    while(*src)
-    {
-        *dest = *src;
-        dest++;
-        src++;
-    }
-    return (ori_dest);
 }
-
-// int main()
-// {
-//     char dest_ft[100];
-//     char dest_builtin[100];
-//     char *src = "try this one  (\0";
-//     ft_strcpy(dest_ft, src);
-//     strcpy(dest_builtin, src);
-//     putstr(dest_ft);
-//     putstr(dest_builtin);
-//     return (0);
-
-// }
 
