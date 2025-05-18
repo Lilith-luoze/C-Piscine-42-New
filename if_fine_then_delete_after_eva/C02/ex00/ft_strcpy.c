@@ -10,18 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <unistd.h>
 
-void	putstr(char *str)
-{
-	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-	}
-	write(1, "\n", 1);
-}
+
 
 char	*ft_strcpy(char *dest, char *src)
 {
@@ -34,8 +24,20 @@ char	*ft_strcpy(char *dest, char *src)
 		dest++;
 		src++;
 	}
+	*dest = '\0';
 	return (ori_dest);
 }
+// #include <string.h>
+// #include <unistd.h>
+// void	putstr(char *str)
+// {
+// 	while (*str)
+// 	{
+// 		write(1, str, 1);
+// 		str++;
+// 	}
+// 	write(1, "\n", 1);
+// }
 
 // int main()
 // {
