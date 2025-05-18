@@ -1,64 +1,73 @@
-# include <string.h>
-# include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 18:19:54 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 18:20:48 by luozguo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//A bit complicated
+#include <stddef.h>
 
-unsigned int  lili_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    unsigned int i;
-    i = 0;
-    while (*str)
-    {
-        str++;
-        i++;
-    }
-    return (i);
-}
-char *lili_check_same(char *str, char *to_find)
-{
-    //check starting from str
-    while (*str && *to_find && *str == *to_find)
-    {
-        str++;
-        to_find++;
-    }
-    return (to_find);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-char *ft_strstr(char *str, char *to_find)
+int	ft_isfound(char *str, char *to_find)
 {
-    unsigned int len_find;
-    unsigned int i;
-    char *result;
-
-    i = 0;
-    if (*to_find == '\0')
-        return (str);   
-    len_find = lili_strlen(to_find);
-    // result is the first diff pointer or pointer to \0, if it - (str+i) == len_find, then we find it no matter what.
-    while (str[i])//to the end of str
-    {   
-        if (str[i] == to_find[0])
-        {
-            result = lili_check_same(str+i, to_find);
-            if (*result == '\0' )
-                return (str+i); //found it. len_
-            i = i + (result - to_find);
-        }
-        else 
-            i++;
-    }
-    return (NULL);
+	int len;
+	int len_find;
+	len_find = ft_strlen(to_find);
+	len = 0;
+	while (str[len] == to_find[len] && str[len] && to_find[len])
+		len++;
+	if (len_find == len)
+		return (1);
+	return (0);
 }
+//This is about logic. 
+char	*ft_strstr(char *str, char *to_find)
+{
+	int	i;
+
+	i = 0;
+	if (*to_find == '\0')
+		return (str);
+	while (str[i])
+	{
+		if (ft_isfound(str + i, to_find))
+			return(str + i);
+		i++;
+	}
+	return (NULL);
+}
+// #include <stdio.h>
+// #include <string.h>
 
 // int main()
 // {
-//     char *to_find = "f";
-//     char *src = "am i fool or smart? ";
+// char *hay = "hey find me";
+// char *needle = "wo bis du";
 
-//     printf("%s\n", ft_strstr(src , to_find));
-//     printf("%s\n", strstr(src , to_find));
-    
+
+// if (ft_strstr(hay , needle) == NULL)
+// 	printf("Result: (null)\n");
+// else
+// 	printf("Result: %s\n", ft_strstr(hay , needle));
+
+// if (strstr(hay , needle) == NULL)
+// 	printf("Result: (null)\n");
+// else
+// 	printf("Result: %s\n", strstr(hay , needle));
 
 //     return (0);
 // }
