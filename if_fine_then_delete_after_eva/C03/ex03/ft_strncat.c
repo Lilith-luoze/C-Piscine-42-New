@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	char			*ori_dest;
@@ -34,6 +31,8 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 	*dest = '\0';
 	return (ori_dest);
 }
+// #include <stdio.h>
+// #include <string.h>
 
 // int main()
 // {

@@ -10,66 +10,64 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include <stddef.h>
 
-// A bit complicated
-
-unsigned int	lili_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (*str)
-	{
-		str++;
+	while (str[i])
 		i++;
-	}
 	return (i);
 }
 
-char	*lili_check_same(char *str, char *to_find)
+int	ft_isfound(char *str, char *to_find)
 {
-	while (*str && *to_find && *str == *to_find)
-	{
-		str++;
-		to_find++;
-	}
-	return (to_find);
+	int len;
+	int len_find;
+	len_find = ft_strlen(to_find);
+	len = 0;
+	while (str[len] == to_find[len] && str[len] && to_find[len])
+		len++;
+	if (len_find == len)
+		return (1);
+	return (0);
 }
-
+//This is about logic. 
 char	*ft_strstr(char *str, char *to_find)
 {
-	unsigned int	len_find;
-	unsigned int	i;
-	char			*result;
+	int	i;
 
 	i = 0;
 	if (*to_find == '\0')
 		return (str);
-	len_find = lili_strlen(to_find);
 	while (str[i])
 	{
-		if (str[i] == to_find[0])
-		{
-			result = lili_check_same(str + i, to_find);
-			if (*result == '\0')
-				return (str + i);
-			i = i + (result - to_find);
-		}
-		else
-			i++;
+		if (ft_isfound(str + i, to_find))
+			return(str + i);
+		i++;
 	}
 	return (NULL);
 }
+// #include <stdio.h>
+// #include <string.h>
 
 // int main()
 // {
-//     char *to_find = "f";
-//     char *src = "am i fool or smart? ";
+// char *hay = "hey find me";
+// char *needle = "wo bis du";
 
-//     printf("%s\n", ft_strstr(src , to_find));
-//     printf("%s\n", strstr(src , to_find));
+
+// if (ft_strstr(hay , needle) == NULL)
+// 	printf("Result: (null)\n");
+// else
+// 	printf("Result: %s\n", ft_strstr(hay , needle));
+
+// if (strstr(hay , needle) == NULL)
+// 	printf("Result: (null)\n");
+// else
+// 	printf("Result: %s\n", strstr(hay , needle));
 
 //     return (0);
 // }

@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
 char	*ft_strcat(char *dest, char *src)
 {
 	char	*ori_dest;
@@ -31,7 +28,8 @@ char	*ft_strcat(char *dest, char *src)
 	*dest = '\0';
 	return (ori_dest);
 }
-
+// #include <stdio.h>
+// #include <string.h>
 // int main()
 // {
 //     char s1[100] = "am i ";
