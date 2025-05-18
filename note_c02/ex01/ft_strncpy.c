@@ -40,16 +40,16 @@ char *ft_strncpy(char *dest, char *src, unsigned int n)
 }
 
 
-// int main()
-// {
-//     char dest_ft[5];
-//     char dest_builtin[5];
-//     char *src = "try this one  (\0";
-//     ft_strncpy(dest_ft, src , sizeof(dest_ft));
-//     strncpy(dest_builtin, src, sizeof(dest_builtin));
-//     printf("%s\n", dest_ft);
-//     printf("%s\n", dest_builtin );
+int main()
+{
+    char dest_ft[5];
+    char dest_builtin[5];
+    char *src = "try this one  (\0";
+    ft_strncpy(dest_ft, src , sizeof(dest_ft));
+    strncpy(dest_builtin, src, sizeof(dest_builtin));
+    printf("%s\n", dest_ft);
+    printf("%s\n", dest_builtin );
 
-//     return (0);
+    return (0);
 
-// }
+}

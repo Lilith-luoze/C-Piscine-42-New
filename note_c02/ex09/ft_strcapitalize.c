@@ -1,42 +1,41 @@
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-#include <ctype.h>
-
-char *ft_strcapitalize(char *str)
+char	*ft_strcapitalize(char *str)
 {
-    //  modify in-place
-    //  I thought it would be hard for lower letters in a word other than the first capital one. But then you just simply use filtering (invented by me..)
-    int i;
-    i = 0;
+	int	i;
 
-    if ( i == 0 &&  (str[i] >= 'a' && str[i] <= 'z' ) ) // capi the head in place i== 0; do this to avoid access out of bound
-        str[i] = str[i] - ('z' - 'Z');
-    i++;
-    // word : !((str[i-1] >= 'A' && str[i-1] <= 'Z' ) || (str[i-1] >= 'a' && str[i-1] <= 'z' ) || (str[i] >= '0' && str[i] <= '9' ))
-    while(str[i])
-    {
-        //i >= 1
-        if (!((str[i-1] >= 'A' && str[i-1] <= 'Z' ) || (str[i-1] >= 'a' && str[i-1] <= 'z' ) || (str[i-1] >= '0' && str[i-1] <= '9' )) && (str[i] >= 'a' && str[i] <= 'z'))
-            //this is normal case for modify for head -- capi
-            str[i] = str[i] - ('z' - 'Z');
-        else if (str[i] >= 'A' && str[i] <= 'Z') //you don't need to care about other cases. as this is "2nd opiton for one specific position"
-            str[i] = str[i] + ('z' - 'Z');
-        i++;
-    }
-    ///////
-    return (str);
+	if (str[0] >= 'a' && str[0] <= 'z')
+		str[0] = str[0] - ('z' - 'Z');
+	i = 1;
+	while (str[i])
+	{
+		if (!(str[i - 1] >= 'A' && str[i - 1] <= 'Z')
+			&& !(str[i - 1] >= 'a' && str[i - 1] <= 'z')
+			&& !(str[i - 1] >= '0' && str[i - 1] <= '9'))
+		{
+			if (str[i] >= 'a' && str[i] <= 'z')
+				str[i] = str[i] - ('z' - 'Z');
+		}
+		else if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = str[i] + ('z' - 'Z');
+		i++;
+	}
+	return (str);
 }
+/*insane: there are only three common cases: the blank, 
+the word head, the word inner. there are two layers of conditions to check
+when iterating over the whole str */ 
 
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
+int main()
+{
 
-// int main()
-// {
+    char str[] = "hi, How ARE you? cApItaL case";
+	printf("%s", str);
+    printf("%s", ft_strcapitalize(str));
 
-//     char str[] = "hi, how are you? 42words forty-two; fifty+and+one";
+    return (0);
 
-//     printf("%s", ft_strcapitalize(str));
-
-//     return (0);
-
-// }
+}
