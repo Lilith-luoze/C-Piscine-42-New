@@ -1,12 +1,24 @@
-int ft_fibonacci(int index)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/19 14:40:53 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/19 14:41:00 by luozguo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_fibonacci(int index)
 {
-    if (index <= -1)
-        return (-1);
-    if (index == 0)
-        return (0);
-    if (index == 1 )
-        return (1);
-    return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
+	if (index <= -1)
+		return (-1);
+	if (index == 0)
+		return (0);
+	if (index == 1)
+		return (1);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }
 /*Create a function ft_fibonacci, that returns the n-th element of the Fibonacci
 sequence, with the first element at index 0.

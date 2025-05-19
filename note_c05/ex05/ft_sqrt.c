@@ -1,17 +1,30 @@
-//safeguard: stop overflow from sqrt * sqrt
-int ft_recursive_sqrt(int nb, int sqrt)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/19 14:41:07 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/19 14:42:40 by luozguo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+// safeguard: stop overflow from sqrt * sqrt
+int	ft_recursive_sqrt(int nb, int sqrt)
 {
-    if (sqrt > nb / sqrt)
-        return(0);
-    if (sqrt * sqrt == nb)
-        return (sqrt);
-    return (ft_recursive_sqrt(nb , sqrt + 1));
+	if (sqrt > nb / sqrt)
+		return (0);
+	if (sqrt * sqrt == nb)
+		return (sqrt);
+	return (ft_recursive_sqrt(nb, sqrt + 1));
 }
-int ft_sqrt(int nb)
+
+int	ft_sqrt(int nb)
 {
-    if (nb <= 0 )
-        return (0);
-    return (ft_recursive_sqrt(nb, 1));
+	if (nb <= 0)
+		return (0);
+	return (ft_recursive_sqrt(nb, 1));
 }
 
 /*the square root of a given number (if it exists), or 0
@@ -26,5 +39,5 @@ if the square root is an irrational number.*/
 //         printf("The square root of %d is %d\n", nb, result);
 //     else
 //         printf("The square root of %d does not exist\n", nb);
-//     return 0;
+//     return (0);
 // }
