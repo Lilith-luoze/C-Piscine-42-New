@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
 
 char	*ft_strlowcase(char *str)
 {
@@ -28,6 +24,10 @@ char	*ft_strlowcase(char *str)
 	}
 	return (ori_str);
 }
+
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
 
 // int main()
 // {

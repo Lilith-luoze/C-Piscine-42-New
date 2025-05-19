@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
 
 int	ft_str_is_alpha(char *str)
 {
@@ -25,6 +22,10 @@ int	ft_str_is_alpha(char *str)
 	}
 	return (1);
 }
+
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 // int main()
 // {

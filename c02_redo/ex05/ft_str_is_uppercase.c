@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
+
 
 int	ft_str_is_uppercase(char *str)
 {
@@ -25,6 +23,9 @@ int	ft_str_is_uppercase(char *str)
 	}
 	return (1);
 }
+
+#include <stdio.h>
+#include <string.h>
 
 // int main()
 // {

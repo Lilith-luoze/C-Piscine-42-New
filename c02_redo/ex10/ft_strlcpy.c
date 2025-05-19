@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
@@ -25,13 +21,19 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	if (size > 0)
+		dest[i] = '\0';
 	while (src[i])
 	{
 		i++;
 	}
 	return (i);
 }
+
+
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
 
 // int main()
 // {

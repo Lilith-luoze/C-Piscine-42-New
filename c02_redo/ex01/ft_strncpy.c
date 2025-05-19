@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-
 // n will usually be equal to 1 less than dest. It's set mannually.
 // there's no promises to NUL terminate the dest string, if n isn't set rightly.
 // Dest's length is directly associated with n;
@@ -49,6 +45,9 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	}
 	return (dest);
 }
+// #include <stdio.h>
+// #include <string.h>
+// #include <unistd.h>
 
 // int main()
 // {

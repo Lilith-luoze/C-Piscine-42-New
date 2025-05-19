@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 
 //  ascii is 100 or 200, which needs two digits in hex to represent one char.
@@ -108,6 +105,10 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	}
 	return (addr);
 }
+
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
 
 // int main()
 // {

@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <unistd.h>
 
 void	putstr(char *str)
 {
@@ -30,13 +28,17 @@ char	*ft_strcpy(char *dest, char *src)
 	ori_dest = dest;
 	while (*src)
 	{
-		*dest = *src;   // because I didn't put \0? yes!
+		*dest = *src;
 		dest++;
 		src++;
 	}
 	*dest = '\0';
 	return (ori_dest);
 }
+
+// #include <string.h>
+// #include <unistd.h>
+
 
 // int main()
 // {

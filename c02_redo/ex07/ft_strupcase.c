@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
+
 
 char	*ft_strupcase(char *str)
 {
@@ -28,6 +25,10 @@ char	*ft_strupcase(char *str)
 	}
 	return (ori_str);
 }
+
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
 
 // int main()
 // {

@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
+
 #include <unistd.h>
 
 void	put_ascii_num_hex(char *str)
@@ -41,6 +39,10 @@ void	ft_putstr_non_printable(char *str)
 		str++;
 	}
 }
+
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
 
 // int main()
 // {

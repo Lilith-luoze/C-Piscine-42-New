@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
+
 
 //  Check printable or not using standard c function : 
 //isprint \0 is ascii 0. how to check this? -- ok. it 
@@ -29,6 +26,10 @@ int	ft_str_is_printable(char *str)
 	}
 	return (1);
 }
+
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
 
 // int main()
 // {
