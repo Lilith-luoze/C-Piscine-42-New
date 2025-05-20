@@ -1,7 +1,7 @@
 
 int ft_atoi(char *str)
 {
-    int a;
+    int digit;
     int nb;
     int sign;
     nb = 0;
@@ -16,15 +16,15 @@ int ft_atoi(char *str)
             sign = -sign;
         str++;
     }
-    if (sign == -1 )
-        write(1, "-",1);
     //add to int
-    while (*str && *str >= '0' && *str <= '9')
+    while (*str && (*str >= '0' && *str <= '9'))
     {
-        a = *str - '0';   
-        nb = nb * 10 + a;
+        digit = *str - '0';   
+        nb = nb * 10 + digit;
         str++;
     }
+    if (sign == -1 )
+        nb = -nb;
     return (nb);
 }
 

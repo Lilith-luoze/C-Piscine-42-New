@@ -89,15 +89,15 @@ void ft_putnbr_base(int nbr, char *base)
     int len;
     char prt[33];
     len = 0;
+    if (base == NULL)
+        return;
     while (base[len])
     {
         if (base[len] == '+' || base[len] == '-')
             return;
         len++;
     }
-    if (len <= 1 || base[0] == ' ')
-        return;
-    if (ft_existdup(base))
+    if (len <= 1 || base[0] == ' ' || ft_existdup(base))
         return;
     ft_itoa_base(nbr , base ,prt);
     ft_prt_char(prt);
