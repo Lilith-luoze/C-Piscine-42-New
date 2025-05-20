@@ -13,18 +13,18 @@
 
 #include <unistd.h>
 
-void	put_ascii_num_hex(char *str)
+void	wrt_hex_per_byte(char *str)
 {
-	int		a;
-	char	hx_num[2];
+	int prt;
+	char	hx_char[2];
 	char	*hex;
 
-	a = *str;
 	hex = "0123456789abcdef";
-	hx_num[0] = *(hex + a / 16);
-	hx_num[1] = *(hex + a % 16);
+	prt = (unsigned char)(*str);
+	hx_char[0] = *(hex + prt / 16);
+	hx_char[1] = *(hex + prt % 16);
 	write(1, "\\", 1);
-	write(1, hx_num, 2);
+	write(1, hx_char, 2);
 }
 
 // printable : 32-126
@@ -35,14 +35,16 @@ void	ft_putstr_non_printable(char *str)
 		if (*str >= 32 && *str <= 126)
 			write(1, str, 1);
 		else
-			put_ascii_num_hex(str);
+			wrt_hex_per_byte(str);
 		str++;
 	}
 }
+/*1. Print all printable ASCII characters (ASCII 32–126).
+  2. For everything else that a char can hold, print it as a hex code(char to int to char).*/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
 
 // int main()
 // {
