@@ -1,13 +1,9 @@
-# include <stdio.h>
-# include <string.h>
 # include <unistd.h>
-# include <limits.h>
 
 void ft_putnbr(int nb)
 {
-    //so try the recursion
     char a;
-    if (nb == INT_MIN)
+    if (nb == -2147483648)
     {
         write(1, "-2147483648", 11);
         return;
@@ -23,10 +19,13 @@ void ft_putnbr(int nb)
     write(1,  &a, 1);
 }
 
-int main()
-{
+// # include <limits.h>
+// # include <stdio.h>
+// # include <string.h>
+// int main()
+// {
     // char *str = "12345";
     // printf("%i", INT_MIN);
-    ft_putnbr(INT_MIN);
-    return (0);
-}
+    // ft_putnbr(INT_MIN);
+//     return (0);
+// }

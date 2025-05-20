@@ -1,5 +1,3 @@
-# include <stdio.h>
-# include <string.h>
 
 int ft_strlen(char *str)
 {
@@ -13,9 +11,12 @@ int ft_strlen(char *str)
     return (i);
 }
 
-int main()
-{
-    char *str = "12345";
-    printf("%i", ft_strlen(str));
-    return (0);
-}
+// # include <stdio.h>
+// # include <string.h>
+
+// int main()
+// {
+//     char *str = "12345";
+//     printf("%i", ft_strlen(str));
+//     return (0);
+// }

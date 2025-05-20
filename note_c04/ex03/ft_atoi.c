@@ -1,7 +1,3 @@
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-# include <limits.h>
 
 int ft_atoi(char *str)
 {
@@ -30,14 +26,17 @@ int ft_atoi(char *str)
         str++;
     }
     return (nb);
-
 }
 
+// # include <stdio.h>
+// # include <string.h>
+// # include <unistd.h>
+// # include <limits.h>
 
-int main()
-{
-    char *str = "  ---+--+1234ab567";
+// int main()
+// {
+//     char *str = "  ---+--+1234ab567";
     
-    printf("%i", ft_atoi(str));
-    return (0);
-}
+//     printf("%i", ft_atoi(str));
+//     return (0);
+// }

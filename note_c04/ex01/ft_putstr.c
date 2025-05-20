@@ -1,7 +1,4 @@
-# include <stdio.h>
-# include <string.h>
 # include <unistd.h>
-
 
 void ft_putstr(char *str)
 {
@@ -12,10 +9,13 @@ void ft_putstr(char *str)
     }
 }
 
-int main()
-{
-    char *str = "12345";
-    ft_putstr(str);
-    // printf("%i", ft_putstr(str));
-    return (0);
-}
+// # include <stdio.h>
+// # include <string.h>
+
+// int main()
+// {
+//     char *str = "12345";
+//     ft_putstr(str);
+//     // printf("%i", ft_putstr(str));
+//     return (0);
+// }
