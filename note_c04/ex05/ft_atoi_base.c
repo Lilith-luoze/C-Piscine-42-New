@@ -8,6 +8,19 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
+int ft_get_index(char a , char * dic_digits)
+{
+    int index;
+    index = 0;
+    while ( dic_digits[index])
+    {
+        if (dic_digits[index] == a)
+            return (index);
+        index++;
+    }
+    return (-1);
+}
+
 int	ft_existdup(char *str)
 {
     int tar;
@@ -40,10 +53,8 @@ int ft_atoi_valid_base(char *str , char *dic_digits)
     int radix;
     radix = ft_strlen(dic_digits);
     nb = 0;
-    //dealing space
     while ((*str >= 9 && *str <= 13) || *str == ' ')
         str++;
-    // dealing with signs
     sign = 1;
     while (*str == '+' || *str == '-')
     {
@@ -51,10 +62,9 @@ int ft_atoi_valid_base(char *str , char *dic_digits)
             sign = -sign;
         str++;
     }
-    //add to int
-    while (*str && (*str >= dic_digits[0] && *str <= dic_digits[radix - 1]))
+    while (*str && ft_get_index(*str , dic_digits) != -1)
     {
-        digit = *str - dic_digits[0];   
+        digit = ft_get_index(*str , dic_digits);   
         nb = nb * radix + digit;
         str++;
     }
@@ -81,8 +91,6 @@ int ft_atoi_base(char *str, char *base)
 }
 
 #include <stdio.h>
-
-int ft_atoi_base(char *str, char *base);
 
 int main(void)
 {
