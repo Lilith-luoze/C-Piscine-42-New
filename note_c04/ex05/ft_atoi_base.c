@@ -83,11 +83,13 @@ int ft_atoi_base(char *str, char *base)
     len = 0;
     while (base[len])
     {
-        if (base[len] == '+' || base[len] == '-' || base[len] == ' ')
+        if (base[len] == '+' || base[len] == '-')
+            return (0);
+        if (base[len] <= 32 || base[len] >= 127)
             return (0);
         len++;
     }
-    if (len <= 1 || base[0] == ' ' || ft_existdup(base))
+    if (len <= 1 || ft_existdup(base))
         return (0);
     return(ft_atoi_valid_base(str, base));
 }
