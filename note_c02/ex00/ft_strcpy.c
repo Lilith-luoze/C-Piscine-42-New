@@ -1,3 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 14:57:25 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/17 20:36:47 by luozguo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+void	putstr(char *str)
+{
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+	}
+	write(1, "\n", 1);
+}
 
 char	*ft_strcpy(char *dest, char *src)
 {
@@ -13,17 +35,10 @@ char	*ft_strcpy(char *dest, char *src)
 	*dest = '\0';
 	return (ori_dest);
 }
+
 // #include <string.h>
 // #include <unistd.h>
-// void	putstr(char *str)
-// {
-// 	while (*str)
-// 	{
-// 		write(1, str, 1);
-// 		str++;
-// 	}
-// 	write(1, "\n", 1);
-// }
+
 
 // int main()
 // {

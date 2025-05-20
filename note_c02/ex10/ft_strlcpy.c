@@ -1,30 +1,37 @@
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-#include <ctype.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 14:57:12 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 15:09:18 by luozguo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 
-
-unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-    //copy until size-1, and nul term it.
-    unsigned int i;
-    i = 0;
-    while((i < size-1) && (src[i]))
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';
-    while(src[i])
-    {
-        i++;
-    }
-    return (i);
+	unsigned int	i;
+
+	i = 0;
+	while ((i < size - 1) && (src[i]))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	if (size >= 1)
+		dest[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }
 
 
-
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
 
 // int main()
 // {

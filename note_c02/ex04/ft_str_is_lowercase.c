@@ -1,21 +1,30 @@
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 14:57:40 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 15:01:34 by luozguo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_str_is_lowercase(char *str)
+
+int	ft_str_is_lowercase(char *str)
 {
-    while(*str)
-    {
-        if (*str >= 'a' && *str <= 'z' )
-           str++;
-        else 
-            return (0);
-    }
-    return (1);
-    
+	while (*str)
+	{
+		if (*str >= 'a' && *str <= 'z')
+			str++;
+		else
+			return (0);
+	}
+	return (1);
 }
 
-
+#include <stdio.h>
+#include <string.h>
 
 // int main()
 // {

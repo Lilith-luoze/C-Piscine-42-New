@@ -1,87 +1,50 @@
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-#include <ctype.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 14:57:07 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 15:41:27 by luozguo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    put_ascii_num_hex(char * str)
+
+#include <unistd.h>
+
+void	wrt_hex_per_byte(char *str)
 {
-    int n;
-    char hex[] = "0123456789abcdef";
+	int prt;
+	char	hx_char[2];
+	char	*hex;
 
-    n = *str; //ascii number for the char 0-127
-
-    //the logic for hex-itoa is totally the same as dec-itoa
-    //itoa (i to hex-char)
-    int ori_n;
-    int base = 1;
-    ori_n = n;
-
-    while(n >= 16)
-    {
-        n /= 16;
-        base *= 16;
-    }
-    n = ori_n;
-    int i = 0;
-    write(1, "\\",1 );
-    while(n >= 16)
-    {
-        i  = n / base;
-        write(1, &hex[i], 1);
-        n %= base;
-        base /= 16;
-    }
-    if (ori_n <= 15)
-        write(1, "0",1);
-    write(1, &hex[n], 1);
-}
-
-void    put_ascii_num_dec(char * str)
-{
-    int n;
-    int ori_n;
-    int base = 1;
-
-
-    n = *str;
-    ori_n = n;
-
-    //itoa (i to dec-char)
-    while(n >= 10)
-    {
-        n /= 10;
-        base *= 10;
-    }
-    n = ori_n;
-    char prt;
-    write(1, "\\",1 );
-    while(n >= 10)
-    {
-        prt = n / base + '0';
-        write(1, &prt, 1);
-        n %= base;
-        base /= 10;
-    }
-    prt = n / base + '0';
-    write(1, &prt, 1);
+	hex = "0123456789abcdef";
+	prt = (unsigned char)(*str);
+	hx_char[0] = *(hex + prt / 16);
+	hx_char[1] = *(hex + prt % 16);
+	write(1, "\\", 1);
+	write(1, hx_char, 2);
 }
 
 // printable : 32-126
-void ft_putstr_non_printable(char *str)
+void	ft_putstr_non_printable(char *str)
 {
- // lowercase hexadecimal values, preceded by a backslash
-    
-    //write decimal first
-    while(*str)
-    {
-        if(*str >= 32 && *str <= 126)
-            write(1, str, 1);
-        else
-            put_ascii_num_hex(str);
-        str++;
-    }
- 
+	while (*str)
+	{
+		if (*str >= 32 && *str <= 126)
+			write(1, str, 1);
+		else
+			wrt_hex_per_byte(str);
+		str++;
+	}
 }
+/*1. Print all printable ASCII characters (ASCII 32–126).
+  2. For everything else that a char can hold, print it as a hex code(char to int to char).*/
+
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
 
 // int main()
 // {

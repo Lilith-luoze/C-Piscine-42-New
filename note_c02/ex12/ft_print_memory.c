@@ -1,102 +1,116 @@
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-# include <ctype.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_memory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luozguo <luozguo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 14:57:03 by luozguo           #+#    #+#             */
+/*   Updated: 2025/05/15 15:10:50 by luozguo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//  ascii is 100 or 200, which needs two digits in hex to represent one char.
-//So write a function to print that char.
-void    wrt_hex_per_char(char *a)
+#include <unistd.h>
+
+void	wrt_hex_per_byte(unsigned char prt)
 {
-    int dst;
-    char *hex = "0123456789abcdef";
-    dst = (*a) / 16;
-    write(1, hex+dst, 1);
-    dst = (*a) % 16;
-    write(1, hex+dst, 1);
+	int		i;
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	i = prt / 16;
+	write(1, hex + i, 1);
+	i = prt % 16;
+	write(1, hex + i, 1);
 }
 
-void    prt_addrs_hex(unsigned long addr_digits)
+void	prt_addrs_hex(unsigned long addr)
 {
-    char *hex = "0123456789abcdef";
-    char str_hex[16];
-    int i;
-    i = 0;
-    while (i < 16)
-    {
-        str_hex[15 - i ] = *(hex + addr_digits % 16);
-        addr_digits /= 16;
-        i++;
-    }
-    write(1, str_hex, 16);
-    write(1 , ": ", 2);
+	char	*hex;
+	char	str_hex[16];
+	int		i;
+
+	hex = "0123456789abcdef";
+	i = 0;
+	while (i < 16)
+	{
+		str_hex[15 - i] = *(hex + addr % 16);
+		addr /= 16;
+		i++;
+	}
+	write(1, str_hex, 16);
+	write(1, ": ", 2);
 }
-//32-126
-void    prt_content_hex(char* addr, unsigned int size)
+// 32-126
+
+void	prt_content_hex(unsigned char *contnt, unsigned int size)
 {
-    unsigned int i;
-    i = 0;
-    while (i < size )
-    {
-        wrt_hex_per_char(addr + i);
-        if (i % 2 == 1)
-           write(1, " ", 1);
-        i++;
-    }
-    while (i < 16)
-    {
-        write(1, "  ", 2);
-        if (i % 2 == 1)
-           write(1, " ", 1);
-        i++;
-    }
+	unsigned int	byte_cnt;
+
+	byte_cnt = 0;
+	while (byte_cnt < size)
+	{
+		wrt_hex_per_byte(contnt[byte_cnt]);
+		if (byte_cnt % 2 == 1)
+			write(1, " ", 1);
+		byte_cnt++;
+	}
+	while (byte_cnt < 16)
+	{
+		write(1, "  ", 2);
+		if (byte_cnt % 2 == 1)
+			write(1, " ", 1);
+		byte_cnt++;
+	}
 }
 
-void prt_content_ascii(char *str, unsigned int size)
+void	prt_content_ascii(unsigned char *str, unsigned int size)
 {
-    //The 3rd column : normal print - print printable and if non, print .
-    unsigned int i;
-    i = 0;
-    while (i < size)
-    {
-    if (str[i] >= 32 && str[i] <= 126)
-        write(1, str + i, 1);
-    else
-        write(1, ".", 1);
-    i++;
-    }
-    write(1, "\n", 1);
+	unsigned int	byte_cnt;
+
+	byte_cnt = 0;
+	while (byte_cnt < size)
+	{
+		if (str[byte_cnt] >= 32 && str[byte_cnt] <= 126)
+			write(1, str + byte_cnt, 1);
+		else
+			write(1, ".", 1);
+		byte_cnt++;
+	}
+	write(1, "\n", 1);
 }
 
-//deal with the problem of passing less than / more than 16 
-void *ft_print_memory(void *addr, unsigned int size)
+void	*ft_print_memory(void *addr, unsigned int size)
 {
-    unsigned int part_size;
-    unsigned int offset;
-    offset = 0;
-    char *str = (char *)addr;
-    if (size == 0)
-        return (NULL);
-    // how to control it to stop when size is a unsigned int.
-    //the trick is never deduct size
-    part_size = 16;
-    while (offset < size)
-    {
-        if (size - offset < 16)
-            part_size = size - offset;
-        prt_addrs_hex((unsigned long)(str + offset));
-        prt_content_hex(str + offset, part_size);
-        prt_content_ascii(str + offset, part_size);
-        offset += 16;
-    }
-    return(addr);
+	unsigned int	part_size;
+	unsigned int	offset;
+	unsigned char			*str;
+
+	offset = 0;
+	str = (unsigned char *)addr;
+	part_size = 16;
+	if (size == 0)
+		return (NULL);
+	while (offset < size)
+	{
+		if (size - offset < 16)
+			part_size = size - offset;
+		prt_addrs_hex((unsigned long)(str + offset));
+		prt_content_hex(str + offset, part_size);
+		prt_content_ascii(str + offset, part_size);
+		offset += 16;
+	}
+	return (addr);
 }
 
-int main()
-{
-    char str[] = "Bonjour les aminches..c.est fou.tout.ce qu onpeut faire avec...print_memory....1o1.1o1. .";
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+    // char str[] = "1234567890ABCDEFHello42Piscine!";
     // printf("%lu", sizeof(str));
-
-    ft_print_memory(str, sizeof(str)-1);
-    return (0);
-}
-
+	// int str = 12345;
+//     ft_print_memory(&str, sizeof(str));
+// }
