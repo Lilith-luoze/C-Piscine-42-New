@@ -1,3 +1,5 @@
+# include <stddef.h>
+
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -81,7 +83,7 @@ int ft_atoi_base(char *str, char *base)
     len = 0;
     while (base[len])
     {
-        if (base[len] == '+' || base[len] == '-')
+        if (base[len] == '+' || base[len] == '-' || base[len] == ' ')
             return (0);
         len++;
     }
@@ -90,24 +92,24 @@ int ft_atoi_base(char *str, char *base)
     return(ft_atoi_valid_base(str, base));
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(void)
-{
-    // Valid base conversions
-    printf("Base 10: %d\n", ft_atoi_base("   ---+--+1234ab567", "0123456789"));  // → -1234
-    printf("Binary: %d\n", ft_atoi_base("   +--+1011", "01"));                  // → -11
-    printf("Hex: %d\n", ft_atoi_base("1A", "0123456789ABCDEF"));               // → 26
-    printf("Octal: %d\n", ft_atoi_base("20", "01234567"));                     // → 16
-    printf("Poneyvif: %d\n", ft_atoi_base("poney", "poneyvif"));               // → value in base-8
+// int main(void)
+// {
+//     // Valid base conversions
+//     printf("Base 10: %d\n", ft_atoi_base("   ---+--+1234ab567", "0123456789"));  // → -1234
+//     printf("Binary: %d\n", ft_atoi_base("   +--+1011", "01"));                  // → 11
+//     printf("Hex: %d\n", ft_atoi_base("1A", "0123456789ABCDEF"));               // → 26
+//     printf("Octal: %d\n", ft_atoi_base("20", "01234567"));                     // → 16
+//     printf("Poneyvif: %d\n", ft_atoi_base("poney", "poneyvif"));               // → value in base-8
 
-    // Edge cases
-    printf("Invalid base (duplicates): %d\n", ft_atoi_base("123", "001234"));  // → 0
-    printf("Invalid base (only one char): %d\n", ft_atoi_base("111", "1"));    // → 0
-    printf("Invalid base (contains '+'): %d\n", ft_atoi_base("111", "0123+")); // → 0
-    printf("Invalid base (contains '-'): %d\n", ft_atoi_base("111", "01-23")); // → 0
-    printf("Invalid base (contains space): %d\n", ft_atoi_base("111", "01 23"));// → 0
-    printf("Invalid digit: %d\n", ft_atoi_base("1Z", "0123456789ABCDEF"));     // → 1 (stops at Z)
+//     // Edge cases
+//     printf("Invalid base (duplicates): %d\n", ft_atoi_base("123", "001234"));  // → 0
+//     printf("Invalid base (only one char): %d\n", ft_atoi_base("111", "1"));    // → 0
+//     printf("Invalid base (contains '+'): %d\n", ft_atoi_base("111", "0123+")); // → 0
+//     printf("Invalid base (contains '-'): %d\n", ft_atoi_base("111", "01-23")); // → 0
+//     printf("Invalid base (contains space): %d\n", ft_atoi_base("111", "01 23"));// → 0
+//     printf("Invalid digit: %d\n", ft_atoi_base("1Z", "0123456789ABCDEF"));     // → 1 (stops at Z)
 
-    return 0;
-}
+//     return 0;
+// }

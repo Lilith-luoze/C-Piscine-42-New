@@ -11,24 +11,20 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-//data in prt[33] would be [<-> 000..00 xyz \0]
+//data in prt[33] would be [<-> +++..+++ xyz \0]
 void ft_prt_char(char *prt)
 {
-    int flag;
-    flag = 0;
     if(*prt == '-')
         write(1, prt, 1);
     prt++;
+    
     while(*prt)
     {
-        while (*prt == '0' && flag == 0)
+        while(*prt == '+' && *prt )
             prt++;
-        write(1, prt,1);
-        flag = 1;
+        write(1, prt, 1);
         prt++;
     }
-    if (flag == 0) 
-        write(1, "0", 1);
 }
 
 //prt[33]
@@ -38,9 +34,9 @@ void  ft_itoa_base(int nb , char * avail_digits , char *prt)
     unsigned int prt_nb;
     int i;
     i = -1;
-    redix = (unsigned int)ft_strlen(avail_digits); // take decimal as example (10) 
+    redix = (unsigned int)ft_strlen(avail_digits);
     while (++i < 33)
-        prt[i] = '0';
+        prt[i] = '+';
     prt[32] = '\0';
     if (nb < 0)
     {
@@ -49,13 +45,14 @@ void  ft_itoa_base(int nb , char * avail_digits , char *prt)
     }
     else
         prt_nb = (unsigned int)nb ;
-    i = -1;
+    i = 0;
     while (prt_nb >= redix)
     {   
-        prt[31 - (++i)] = avail_digits[prt_nb % redix];
+        prt[31 - i] = avail_digits[prt_nb % redix];
         prt_nb /= redix;
+        i++;
     }
-    prt[31 - (++i)] = avail_digits[prt_nb % redix];
+    prt[31 - i] = avail_digits[prt_nb % redix];
 }
 
 int	ft_existdup(char *str)
@@ -93,7 +90,7 @@ void ft_putnbr_base(int nbr, char *base)
         return;
     while (base[len])
     {
-        if (base[len] == '+' || base[len] == '-')
+        if (base[len] == '+' || base[len] == '-' || base[len] == ' ')
             return;
         len++;
     }
@@ -102,7 +99,6 @@ void ft_putnbr_base(int nbr, char *base)
     ft_itoa_base(nbr , base ,prt);
     ft_prt_char(prt);
 }
-
 
 // # include <stdio.h>
 // # include <string.h>
