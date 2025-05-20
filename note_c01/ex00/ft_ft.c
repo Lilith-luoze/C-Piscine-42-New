@@ -11,6 +11,5 @@ int  main()
 
 
     ft_ft(&nbr);
-    printf("%i",nbr);
-    return (0);
+
 }
